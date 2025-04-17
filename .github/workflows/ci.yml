@@ -47,7 +47,7 @@ jobs:
   build:
     needs: pr-version
     if: always() && github.actor != 'dependabot[bot]'
-    timeout-minutes: 10
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     permissions:
       contents: read
