@@ -1,0 +1,95 @@
+name: MAIN
+
+on:
+  push:
+    branches: [master, main, develop, staging]
+    paths-ignore:
+      - "helm-chart/**"
+  pull_request:
+    paths-ignore:
+      - "helm-chart/**"
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ARTIFACTSREGISTRY: ${{ vars.DOCKER_REGISTRY }}
+  LUMIA_APP: ${{ github.event.repository.name }}
+
+jobs:
+  pr-version:
+    timeout-minutes: 1
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: read
+    runs-on: ubuntu-latest
+    outputs:
+      pr_id: ${{ steps.pr_id.outputs.pr_id }}
+    steps:
+      - name: Get TASK ID
+        id: taskmanager_id
+        uses: kaisugi/action-regex-match@45cc5bacf016a4c0d2c3c9d0f8b7c2f1b79687b8 #v1.0.1
+        with:
+          text: ${{ github.event.pull_request.title }}
+          regex: '^(?<=^|[a-z]\-|[\s\p{Punct}&&[^\-]])([A-Z][A-Z0-9_]*-\d+)(?![^\W_]).*'
+      - name: Change string case TASK ID
+        id: lowercase_taskmanager_id
+        uses: ASzc/change-string-case-action@d0603cd0a7dd490be678164909f65c7737470a7f #v6
+        with:
+          string: ${{ steps.taskmanager_id.outputs.group1 }}
+      - name: Print PR number and taskmanager_id
+        id: pr_id
+        run: echo "pr_id=${{ steps.lowercase_taskmanager_id.outputs.lowercase || format('pr-{0}', github.event.pull_request.number) }}" >> $GITHUB_OUTPUT
+
+  build:
+    needs: pr-version
+    if: always() && github.actor != 'dependabot[bot]'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+        with:
+          persist-credentials: false
+      - name: Define params
+        run: |
+          case "$GITHUB_REF_NAME" in
+            develop)
+              echo "IMAGE_TAG=develop" >> "$GITHUB_ENV"
+              ;;
+            master|main)
+              echo "IMAGE_TAG=release" >> "$GITHUB_ENV"
+              ;;
+            */merge)
+              echo "IMAGE_TAG=${{ needs.pr-version.outputs.pr_id }}" >> "$GITHUB_ENV"
+              ;;
+            *)
+              echo "IMAGE_TAG=${GITHUB_REF_NAME//\//_}" >> "$GITHUB_ENV"
+              ;;
+          esac
+        shell: bash
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 #v3.10.0
+        with:
+          version: v0.22.0
+      - name: Login to DockerRegistry
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 #v3.4.0
+        with:
+          registry: ${{ env.ARTIFACTSREGISTRY }}
+          username: ${{ secrets.DOCKER_LOGIN }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 #v6.15.0
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.ARTIFACTSREGISTRY }}/${{ env.LUMIA_APP }}:${{ env.IMAGE_TAG }}
+            ${{ env.ARTIFACTSREGISTRY }}/${{ env.LUMIA_APP }}:${{ github.sha || github.event.pull_request.head.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
