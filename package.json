@@ -4,7 +4,7 @@
   "version": "11.0.0",
   "author": "J M Rossy",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.0.0 <21.0.0"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.4.2",
