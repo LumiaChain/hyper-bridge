@@ -3,13 +3,15 @@ import { Color } from '../styles/Color';
 
 export const MAIN_FONT = SpaceGrotesk({
   subsets: ['latin'],
+  weight: ['400', '700'], // Add weights here (e.g., regular 400 and bold 700)
   variable: '--font-main',
   preload: true,
   fallback: ['sans-serif'],
 });
-export const APP_NAME = 'Hyperlane Warp UI Template';
-export const APP_DESCRIPTION = 'A DApp for Hyperlane Warp Route transfers';
-export const APP_URL = 'hyperlane-warp-template.vercel.app';
-export const BRAND_COLOR = Color.primary['500'];
-export const BACKGROUND_COLOR = Color.primary['500'];
-export const BACKGROUND_IMAGE = 'url(/backgrounds/main.svg)';
+export const APP_NAME = 'Lumia Bridge';
+export const APP_DESCRIPTION = 'Lumia Instant Bridge';
+export const APP_URL = 'https://bridge.lumia.org';
+export const BRAND_COLOR = Color.primary;
+export const BACKGROUND_COLOR = Color.primary;
+export const BACKGROUND_IMAGE = 'url(/backgrounds/background.jpg)';
+export const PROXY_DEPLOYED_URL = 'https://proxy.hyperlane.xyz';

@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
+
 import { APP_DESCRIPTION, APP_NAME, APP_URL, BRAND_COLOR, MAIN_FONT } from '../consts/app';
 
 export default function Document() {
@@ -17,11 +18,12 @@ export default function Document() {
         <meta name="theme-color" content="#ffffff" />
 
         <meta name="application-name" content={APP_NAME} />
-        <meta name="keywords" content={APP_NAME + ' Hyperlane Token Bridge Interchain App'} />
+        <meta name="keywords" content={APP_NAME + ' instantly move tokens to and from Lumia.'} />
         <meta name="description" content={APP_DESCRIPTION} />
 
         <meta name="HandheldFriendly" content="true" />
         <meta name="apple-mobile-web-app-title" content={APP_NAME} />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         <meta property="og:url" content={APP_URL} />

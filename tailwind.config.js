@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
 const defaultTheme = require('tailwindcss/defaultTheme');
-const defaultColors = require('tailwindcss/colors');
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -18,32 +17,32 @@ module.exports = {
     },
     extend: {
       colors: {
-        black: '#010101',
+        black: '#000000',
         white: '#ffffff',
-        gray: { ...defaultColors.gray, '150': '#EBEDF0', '250': '#404040', '350': '#6B6B6B' },
+        gray: { ...defaultTheme.colors.gray, 150: '#EBEDF0', 250: '#404040', 350: '#6B6B6B' },
         primary: {
-          50: '#E6EDF9',
-          100: '#CDDCF4',
-          200: '#A7C2EC',
-          300: '#82A8E4',
-          400: '#5385D2',
-          500: '#2764c1',
-          600: '#1D4685',
-          700: '#162A4A',
-          800: '#11213B',
-          900: '#0D192C',
+          50: '#000',
+          100: '#000',
+          200: '#000',
+          300: '#000',
+          400: '#000',
+          500: '#000',
+          600: '#000',
+          700: '#000',
+          800: '#000',
+          900: '#000',
         },
         accent: {
-          50: '#FAEAF8',
-          100: '#F2C1EA',
-          200: '#EA98DC',
-          300: '#E26ECE',
-          400: '#DA45C0',
-          500: '#D631B9',
-          600: '#C02CA6',
-          700: '#952281',
-          800: '#6B185C',
-          900: '#400E37',
+          50: '#263554',
+          100: '#263554',
+          200: '#263554',
+          300: '#263554',
+          400: '#263554',
+          500: '#263554',
+          600: '#263554',
+          700: '#263554',
+          800: '#263554',
+          900: '#263554',
         },
         red: {
           100: '#EBBAB8',
@@ -84,11 +83,11 @@ module.exports = {
       },
       borderRadius: {
         none: '0',
-        sm: '0.20rem',
-        DEFAULT: '0.30rem',
-        md: '0.40rem',
-        lg: '0.50rem',
-        full: '9999px',
+        sm: '0',
+        DEFAULT: '0',
+        md: '0',
+        lg: '0',
+        full: '0',
       },
       blur: {
         xs: '3px',
