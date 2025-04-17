@@ -90,7 +90,7 @@ function Form({ onAdd }: { onAdd: (warpCoreConfig: WarpCoreConfig) => void }) {
         onClick={onClickAdd}
         className="w-full gap-1 bg-accent-500 px-3 py-1.5 text-sm text-white"
       >
-        <PlusIcon width={20} height={20} color={Color.white} />
+        <PlusIcon width={20} height={20} color={Color.white.toString()} />
         <span>Add Config</span>
       </Button>
     </>

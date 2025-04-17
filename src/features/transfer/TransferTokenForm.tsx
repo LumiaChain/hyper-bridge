@@ -347,7 +347,7 @@ function ButtonSection({
         color="primary"
         onClick={() => setIsReview(false)}
         className="px-6 py-1.5"
-        icon={<ChevronIcon direction="w" width={10} height={6} color={Color.white} />}
+        icon={<ChevronIcon direction="w" width={10} height={6} color={Color.white.toString()} />}
       >
         <span>Edit</span>
       </SolidButton>

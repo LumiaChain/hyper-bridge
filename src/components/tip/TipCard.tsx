@@ -14,7 +14,7 @@ export function TipCard() {
       <h2 className="text-primary-500">Bridge your LUMIA tokens instantly to Lumia Chain!</h2>
       <div className="flex items-end justify-between">
         <p className="mt-1 max-w-[75%] text-xs">
-          If you have NOT swapped your old $ORN to new $LUMIA, please do so now by clicking 'More' tooltip to the right.
+          If you have NOT swapped your old $ORN to new $LUMIA, please do so now by clicking More tooltip to the right.
         </p>
         <a
           href={links.swap}

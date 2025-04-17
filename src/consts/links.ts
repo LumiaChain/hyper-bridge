@@ -7,4 +7,5 @@ export const links = {
   twitter: 'https://x.com/BuildOnLumia',
   blog: 'https://medium.com/@Lumia.org',
   swap: 'https://token.lumia.org',
+  gasDocs: 'https://docs.lumia.org/gas',
  };
