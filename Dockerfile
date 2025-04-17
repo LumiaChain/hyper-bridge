@@ -4,6 +4,8 @@ WORKDIR /app
 COPY .yarn /app/.yarn
 COPY package.json yarn.lock .yarnrc.yml ./
 
+RUN apk add --no-cache git
+
 RUN corepack enable && yarn install
 COPY . .
 
