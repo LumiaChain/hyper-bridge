@@ -37,9 +37,9 @@ export async function assembleWarpCoreConfig(
     ? filterToIds(registryWarpRoutes, warpRouteWhitelist)
     : registryWarpRoutes;
 
-  console.log('Available routes in registry:', Object.keys(registryWarpRoutes));
-  console.log('Whitelist:', warpRouteWhitelist);
-  console.log('Filtered routes:', Object.keys(filteredRegistryConfigMap));
+  // console.log('Available routes in registry:', Object.keys(registryWarpRoutes));
+  // console.log('Whitelist:', warpRouteWhitelist);
+  // console.log('Filtered routes:', Object.keys(filteredRegistryConfigMap));
 
   const filteredRegistryConfigValues = Object.values(filteredRegistryConfigMap);
   const filteredRegistryTokens = filteredRegistryConfigValues.map((c) => c.tokens).flat();
