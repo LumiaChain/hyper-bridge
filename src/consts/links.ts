@@ -8,4 +8,5 @@ export const links = {
   blog: 'https://medium.com/@Lumia.org',
   swap: 'https://token.lumia.org',
   gasDocs: 'https://docs.lumia.org/gas',
+  imgPath: 'https://cdn.jsdelivr.net/gh/hyperlane-xyz/hyperlane-registry@main/',
  };

@@ -3,8 +3,8 @@
 // If left null, all warp routes in the configured registry will be included
 // If set to a list (including an empty list), only the specified routes will be included
 export const warpRouteWhitelist: Array<string> = [
-  'LUMIA/bsc-ethereum-lumiaprism',    // Lumia Chain
-  'USDT/ethereum-lumiaprism',
-  'USDC/ethereum-lumiaprism',
-  'PNDR/bsc-ethereum-lumiaprism',
+  "LUMIA/arbitrum-avalanche-base-bsc-ethereum-lumiaprism-optimism-polygon",
+  "USDT/ethereum-lumiaprism",
+  "USDC/lumia",
+  "PNDR/bsc-ethereum-lumiaprism",
 ];
