@@ -33,6 +33,9 @@ const sentryOptions = {
   project: 'warp-ui',
   authToken: process.env.SENTRY_AUTH_TOKEN,
   hideSourceMaps: true,
+  sourcemaps: {
+    disable: true,
+  },
   bundleSizeOptimizations: {
     excludeDebugStatements: true,
     excludeReplayIframe: true,
