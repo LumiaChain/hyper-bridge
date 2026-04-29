@@ -4796,7 +4796,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^8.13.0"
     "@typescript-eslint/parser": "npm:^8.13.0"
     "@vercel/analytics": "npm:^1.4.0"
-    "@vercel/functions": "npm:^1.5.0"
     autoprefixer: "npm:^10.4.20"
     bignumber.js: "npm:^9.1.2"
     buffer: "npm:^6.0.3"
@@ -12807,18 +12806,6 @@ __metadata:
     vue-router:
       optional: true
   checksum: 10/973f25fb106b68bfcdec4aae71b5406e2752b27f89797f86e9bea47adf8443e748c98f575be71c360226688815c1bcb50d6ffa8d9bae3ac925b033d3ba9b4e3e
-  languageName: node
-  linkType: hard
-
-"@vercel/functions@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@vercel/functions@npm:1.5.0"
-  peerDependencies:
-    "@aws-sdk/credential-provider-web-identity": "*"
-  peerDependenciesMeta:
-    "@aws-sdk/credential-provider-web-identity":
-      optional: true
-  checksum: 10/6f2cef77c39650bc3fe7a7e5e9f3ff7e90e9671fdf3bcc7cffe598ab4185623208839fc1ace10fe53e49795f0e8bf5657ff43fc5879ae0ea9f159f3794d22aed
   languageName: node
   linkType: hard
 
