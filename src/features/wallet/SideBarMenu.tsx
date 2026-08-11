@@ -7,6 +7,7 @@ import ArrowRightIcon from '../../images/icons/arrow-right.svg';
 import CollapseIcon from '../../images/icons/collapse-icon.svg';
 import ResetIcon from '../../images/icons/reset-icon.svg';
 import { useMultiProvider } from '../chains/hooks';
+import { useEmbarkBridge } from '../embark/EmbarkBridgeContext';
 import { getChainDisplayName } from '../chains/utils';
 import { useStore } from '../store';
 import { tryFindToken, useWarpCore } from '../tokens/hooks';
@@ -29,6 +30,7 @@ export function SideBarMenu({
   const [selectedTransfer, setSelectedTransfer] = useState<TransferContext | null>(null);
 
   const multiProvider = useMultiProvider();
+  const { openEmbarkBridge } = useEmbarkBridge();
 
   const { transfers, resetTransfers, transferLoading, originChainName } = useStore((s) => ({
     transfers: s.transfers,
@@ -85,6 +87,18 @@ export function SideBarMenu({
             className="px-3 py-3"
             chainName={originChainName}
           />
+          <div className="px-3 pb-3">
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                openEmbarkBridge();
+              }}
+              className="w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-100"
+            >
+              I use Embark
+            </button>
+          </div>
           <div className="mb-4 w-full bg-primary-500 px-3.5 py-2 text-base font-normal tracking-wider text-white">
             Transfer History
           </div>
