@@ -9,6 +9,7 @@ import { ErrorBoundary } from '../components/errors/ErrorBoundary';
 import { AppLayout } from '../components/layout/AppLayout';
 import { MAIN_FONT } from '../consts/app';
 import { WarpContextInitGate } from '../features/WarpContextInitGate';
+import { EmbarkBridgeProvider } from '../features/embark/EmbarkBridgeProvider';
 import { CosmosWalletContext } from '../features/wallet/context/CosmosWalletContext';
 import { EvmWalletContext } from '../features/wallet/context/EvmWalletContext';
 import { SolanaWalletContext } from '../features/wallet/context/SolanaWalletContext';
@@ -40,18 +41,20 @@ export default function App({ Component, pageProps }: AppProps) {
       <ErrorBoundary>
         <QueryClientProvider client={reactQueryClient}>
           <WarpContextInitGate>
-            <EvmWalletContext>
-              <SolanaWalletContext>
-                <CosmosWalletContext>
-                  <StarknetWalletContext>
-                    <AppLayout>
-                      <Component {...pageProps} />
-                      <Analytics />
-                    </AppLayout>
-                  </StarknetWalletContext>
-                </CosmosWalletContext>
-              </SolanaWalletContext>
-            </EvmWalletContext>
+            <EmbarkBridgeProvider>
+              <EvmWalletContext>
+                <SolanaWalletContext>
+                  <CosmosWalletContext>
+                    <StarknetWalletContext>
+                      <AppLayout>
+                        <Component {...pageProps} />
+                        <Analytics />
+                      </AppLayout>
+                    </StarknetWalletContext>
+                  </CosmosWalletContext>
+                </SolanaWalletContext>
+              </EvmWalletContext>
+            </EmbarkBridgeProvider>
           </WarpContextInitGate>
         </QueryClientProvider>
         <ToastContainer transition={Zoom} position="bottom-right" limit={2} />

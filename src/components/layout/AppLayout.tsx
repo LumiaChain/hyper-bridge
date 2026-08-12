@@ -1,9 +1,8 @@
-import { MultiProtocolWalletModal } from '@hyperlane-xyz/widgets';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 import { APP_NAME, BACKGROUND_COLOR, BACKGROUND_IMAGE } from '../../consts/app';
-import { config } from '../../consts/config';
 import { useStore } from '../../features/store';
+import { WalletConnectionModal } from '../../features/wallet/WalletConnectionModal';
 import { SideBarMenu } from '../../features/wallet/SideBarMenu';
 import { Footer } from '../nav/Footer';
 import { Header } from '../nav/Header';
@@ -37,10 +36,9 @@ export function AppLayout({ children }: PropsWithChildren) {
         <Footer />
       </div>
 
-      <MultiProtocolWalletModal
+      <WalletConnectionModal
         isOpen={showEnvSelectModal}
         close={() => setShowEnvSelectModal(false)}
-        protocols={config.walletProtocols}
       />
       <SideBarMenu
         onClose={() => setIsSideBarOpen(false)}
